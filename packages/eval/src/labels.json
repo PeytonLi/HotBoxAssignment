@@ -1,0 +1,74 @@
+[
+  {
+    "username": "matt.lifts.heavy",
+    "expectedTier": "hot",
+    "expectedOrder": 1,
+    "rationale": "Coaching inquiry (#1 priority); plateaued 5 months, explicitly ready for accountability."
+  },
+  {
+    "username": "kels_fit.journey",
+    "expectedTier": "hot",
+    "expectedOrder": 2,
+    "rationale": "Coaching inquiry; deliberated 6 months, asking price + whether programming is custom — high intent."
+  },
+  {
+    "username": "carlos.fit.mx",
+    "expectedTier": "hot",
+    "expectedOrder": 3,
+    "rationale": "Coaching inquiry (Spanish); 8 months training, stuck, needs diet + routine guidance."
+  },
+  {
+    "username": "lifting.layla28",
+    "expectedTier": "strong",
+    "expectedOrder": 4,
+    "rationale": "Product purchase with a hard weekend deadline (meet Saturday); top of goal #2."
+  },
+  {
+    "username": "trevormlifts",
+    "expectedTier": "strong",
+    "expectedOrder": 5,
+    "rationale": "Reorder from satisfied customer; wants chocolate flavor — warm buyer with low friction."
+  },
+  {
+    "username": "calisthenics.cam",
+    "expectedTier": "lukewarm",
+    "expectedOrder": 6,
+    "rationale": "Genuine fitness collab (calisthenics, 90% training audience); collabs are goal #3 but audience fit is real."
+  },
+  {
+    "username": "dan.lifts.things",
+    "expectedTier": "lukewarm",
+    "expectedOrder": 7,
+    "rationale": "Product question (creatine type); curious but no purchase intent yet. Low urgency."
+  },
+  {
+    "username": "briannatfitness",
+    "expectedTier": "lukewarm",
+    "expectedOrder": 8,
+    "rationale": "Support request from existing customer (missing shipping); retention matters but no new revenue."
+  },
+  {
+    "username": "lifestyle.with.lena",
+    "expectedTier": "weak",
+    "expectedOrder": 9,
+    "rationale": "Travel/lifestyle influencer (312k followers); audience is NOT fitness — classic off-vertical collab trap."
+  },
+  {
+    "username": "nadia.skn",
+    "expectedTier": "weak",
+    "expectedOrder": 10,
+    "rationale": "Skincare buyer asking about hyperpigmentation product; wrong vertical entirely."
+  },
+  {
+    "username": "growthlab.media",
+    "expectedTier": "spam",
+    "expectedOrder": 11,
+    "rationale": "Marketing agency cold pitch; 'love what you're doing' opening, selling growth services."
+  },
+  {
+    "username": "cryptoking_gains2024",
+    "expectedTier": "spam",
+    "expectedOrder": 12,
+    "rationale": "Textbook crypto airdrop scam; fake giveaway, urgent CTA, zero relevance."
+  }
+]
