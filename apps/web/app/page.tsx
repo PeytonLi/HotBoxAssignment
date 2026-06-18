@@ -1,11 +1,50 @@
+"use client";
+
+import { useState, useMemo, useEffect } from "react";
+import { loadLeadViews } from "@/lib/data";
+import { filterEntries } from "@/lib/view-model";
+import type { LeadFilters } from "@/lib/view-model";
+import { FilterBar } from "@/components/filter-bar";
+import { QueuePanel } from "@/components/queue-panel";
+import { DetailPanel } from "@/components/detail-panel";
+
 export default function Page() {
+  const [entries, setEntries] = useState<ReturnType<typeof loadLeadViews>>([]);
+  const [selectedUsername, setSelectedUsername] = useState<string | null>(null);
+  const [filters, setFilters] = useState<LeadFilters>({});
+  const [showHandled, setShowHandled] = useState(false);
+
+  useEffect(() => {
+    setEntries(loadLeadViews());
+  }, []);
+
+  const filtered = useMemo(
+    () => filterEntries(entries, filters),
+    [entries, filters],
+  );
+
+  const selectedLead = useMemo(
+    () => entries.find((e) => e.username === selectedUsername) ?? null,
+    [entries, selectedUsername],
+  );
+
   return (
-    <main style={{ padding: 24, fontFamily: "system-ui, sans-serif", lineHeight: 1.5 }}>
-      <h1>Apex Fuel — Lead Triage</h1>
-      <p>Monorepo scaffold is ready. The triage inbox is built by the Web UI agent.</p>
-      <p>
-        See <code>docs/agents/02-web-ui.md</code>.
-      </p>
-    </main>
+    <div className="app-layout">
+      <div className="queue-panel">
+        <FilterBar
+          filters={filters}
+          showHandled={showHandled}
+          onFiltersChange={setFilters}
+          onShowHandledChange={setShowHandled}
+        />
+        <QueuePanel
+          entries={filtered}
+          selectedUsername={selectedUsername}
+          onSelect={setSelectedUsername}
+          showHandled={showHandled}
+        />
+      </div>
+      <DetailPanel lead={selectedLead} />
+    </div>
   );
 }
