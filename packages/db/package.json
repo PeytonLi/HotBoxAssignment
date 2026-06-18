@@ -8,13 +8,18 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run",
+    "migrate": "prisma migrate dev --name init",
+    "generate": "prisma generate",
+    "db:push": "prisma db push"
   },
   "dependencies": {
-    "@hotbox/schema": "workspace:*"
+    "@hotbox/schema": "workspace:*",
+    "@prisma/client": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "prisma": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
