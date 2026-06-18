@@ -6,6 +6,9 @@ packages:
 onlyBuiltDependencies:
   - esbuild
   - sharp
+  - "@prisma/client"
+  - "@prisma/engines"
+  - prisma
 
 catalog:
   "@anthropic-ai/sdk": ^0.68.0
@@ -25,3 +28,5 @@ catalog:
   typescript-eslint: ^8.18.1
   vitest: ^2.1.8
   zod: ^3.24.1
+  "@prisma/client": ^6.1.0
+  prisma: ^6.1.0

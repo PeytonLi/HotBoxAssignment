@@ -16,6 +16,8 @@ results.json
 
 # databases
 *.db
+*.db-wal
+*.db-shm
 *.db-journal
 *.sqlite
 

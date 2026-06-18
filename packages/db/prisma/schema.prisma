@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// Pipeline output: one record per scored lead. Upserted by seed().
+model LeadResult {
+  username       String   @id
+  qualityScore   Int
+  summary        String
+  enrichmentInfo String   // JSON-serialized EnrichmentInfo
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+/// Operator triage decisions: one record per triaged lead.
+model Triage {
+  username  String   @id
+  status    String   // TriageStatus: "unhandled" | "handled" | "dismissed"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
