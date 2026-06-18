@@ -219,7 +219,7 @@ test: mentally swap in a non-fitness `business.json` — nothing but the score s
 localStorage, which the store interface already supports). The core pipeline + UI + quality
 pass is a complete, contract-passing submission on its own.
 
-**~5h marker:** _(fill in where the time box was hit and what was cut.)_
+**~5h marker:** All Phase 1 features (pipeline, web UI, persistence, eval) and Phase 2 E2E tests are complete. No cuts were needed — `draftReply` is implemented and Prisma+SQLite is wired through the `TriageStore` interface with the DB-backed `apiTriageStore`. Full `pnpm typecheck`/`test`/`test:e2e`/`eval` are green. E2E suite covers inbox loading, detail panel with draft copy, triage persistence across reload (DB/API path), and filter/search. Pipeline seeds DB on run behind `DATABASE_URL` gate.
 
 ---
 

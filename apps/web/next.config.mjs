@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Internal TS package is consumed as source; let Next transpile it.
-  transpilePackages: ["@hotbox/schema"],
+  // Internal TS packages are consumed as source; let Next transpile them.
+  transpilePackages: ["@hotbox/schema", "@hotbox/db"],
 };
 
 export default nextConfig;

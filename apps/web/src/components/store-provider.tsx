@@ -1,13 +1,18 @@
 "use client";
 
 import { TriageProvider } from "@/lib/triage-context";
-import { localStorageTriageStore, type TriageStore } from "@hotbox/schema";
+import { inMemoryTriageStore, type TriageStore } from "@hotbox/schema";
+import { apiTriageStore } from "../../app/api/triage/client";
 import type { ReactNode } from "react";
 
 let store: TriageStore | null = null;
 
 function getStore(): TriageStore {
-  if (!store) store = localStorageTriageStore();
+  if (!store) {
+    store = typeof window === "undefined"
+      ? inMemoryTriageStore()
+      : apiTriageStore();
+  }
   return store;
 }
 

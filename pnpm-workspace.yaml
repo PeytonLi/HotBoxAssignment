@@ -8,6 +8,7 @@ onlyBuiltDependencies:
   - sharp
   - "@prisma/client"
   - "@prisma/engines"
+  - "@playwright/test"
   - prisma
 
 catalog:

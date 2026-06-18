@@ -3,19 +3,22 @@
 import { useState, useMemo, useEffect } from "react";
 import { loadLeadViews } from "@/lib/data";
 import { filterEntries } from "@/lib/view-model";
-import type { LeadFilters } from "@/lib/view-model";
+import type { LeadFilters, LeadView } from "@/lib/view-model";
 import { FilterBar } from "@/components/filter-bar";
 import { QueuePanel } from "@/components/queue-panel";
 import { DetailPanel } from "@/components/detail-panel";
 
 export default function Page() {
-  const [entries, setEntries] = useState<ReturnType<typeof loadLeadViews>>([]);
+  const [entries, setEntries] = useState<LeadView[]>([]);
   const [selectedUsername, setSelectedUsername] = useState<string | null>(null);
   const [filters, setFilters] = useState<LeadFilters>({});
   const [showHandled, setShowHandled] = useState(false);
 
   useEffect(() => {
-    setEntries(loadLeadViews());
+    fetch("/api/results")
+      .then((r) => (r.ok ? (r.json() as Promise<LeadView[]>) : Promise.reject(r.status)))
+      .then(setEntries)
+      .catch(() => setEntries(loadLeadViews()));
   }, []);
 
   const filtered = useMemo(
