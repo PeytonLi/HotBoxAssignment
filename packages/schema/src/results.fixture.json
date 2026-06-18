@@ -1,0 +1,102 @@
+{
+  "matt.lifts.heavy": {
+    "qualityScore": 91,
+    "summary": "An intermediate Ohio lifter stuck on bench/squat for ~5 months, explicitly asking what monthly 1:1 coaching involves.",
+    "enrichmentInfo": {
+      "intentCategory": "coaching_inquiry",
+      "primaryAsk": "What does month-to-month coaching look like (programming + form checks)?",
+      "vertical": "fitness",
+      "audienceFit": { "level": "high", "reason": "Active lifter in target age range explicitly seeking serious coaching." },
+      "spamSignals": { "isSpam": false, "reasons": [] },
+      "buyingSignals": { "urgency": "high", "signals": ["plateaued 5 months", "explicitly wants accountability"] },
+      "language": "en",
+      "audienceSize": 134,
+      "isVerified": false,
+      "confidence": 0.9,
+      "tier": "hot",
+      "scoreRationale": "Bullseye for the #1 goal (coaching) with explicit readiness; low follower count is irrelevant to value.",
+      "recommendedAction": "Reply with a coaching overview + intake link; lead with programming and form review.",
+      "draftReply": "hey Matt! totally get the plateau frustration. coaching is monthly: custom programming, weekly check-ins, and i review your form on the main lifts. want me to send over the intake so we can get you moving again?"
+    }
+  },
+  "lifting.layla28": {
+    "qualityScore": 74,
+    "summary": "An amateur powerlifter with a meet Saturday asking whether the strawberry protein is in stock.",
+    "enrichmentInfo": {
+      "intentCategory": "product_purchase",
+      "primaryAsk": "Is the strawberry protein in stock before my meet Saturday?",
+      "vertical": "fitness",
+      "audienceFit": { "level": "high", "reason": "Competing powerlifter, exactly the target customer." },
+      "spamSignals": { "isSpam": false, "reasons": [] },
+      "buyingSignals": { "urgency": "high", "signals": ["meet this Saturday", "ready to buy now"] },
+      "language": "en",
+      "audienceSize": 847,
+      "isVerified": false,
+      "confidence": 0.86,
+      "tier": "strong",
+      "scoreRationale": "High-intent product buyer with a hard deadline; product sales are goal #2.",
+      "recommendedAction": "Confirm stock + expedited shipping options so it arrives before Saturday.",
+      "draftReply": "hey! yes strawberry's in stock — if you order today we can get it to you before the weekend. want the link?"
+    }
+  },
+  "briannatfitness": {
+    "qualityScore": 52,
+    "summary": "An existing customer asking where the shipping confirmation is for a chocolate whey order placed two weeks ago.",
+    "enrichmentInfo": {
+      "intentCategory": "support",
+      "primaryAsk": "Where is my shipping confirmation for the chocolate whey I ordered?",
+      "vertical": "fitness",
+      "audienceFit": { "level": "high", "reason": "Paying customer in target audience; retention matters." },
+      "spamSignals": { "isSpam": false, "reasons": [] },
+      "buyingSignals": { "urgency": "medium", "signals": ["existing order", "waiting 2 weeks"] },
+      "language": "en",
+      "audienceSize": 371,
+      "isVerified": false,
+      "confidence": 0.8,
+      "tier": "lukewarm",
+      "scoreRationale": "Not a new sale, but a support issue from a real customer — resolve fast to protect retention.",
+      "recommendedAction": "Look up the order, send tracking/shipping status, apologize for the delay.",
+      "draftReply": "so sorry about that! let me pull up your order right now and get you a tracking number — give me two mins."
+    }
+  },
+  "nadia.skn": {
+    "qualityScore": 22,
+    "summary": "A skincare creator with hyperpigmentation asking about a product for it — wrong vertical for a supplement brand.",
+    "enrichmentInfo": {
+      "intentCategory": "off_vertical",
+      "primaryAsk": "Do you have a product for stubborn hyperpigmentation?",
+      "vertical": "skincare",
+      "audienceFit": { "level": "low", "reason": "Skincare need, not fitness supplements or coaching." },
+      "spamSignals": { "isSpam": false, "reasons": [] },
+      "buyingSignals": { "urgency": "low", "signals": ["exploring options"] },
+      "language": "en",
+      "audienceSize": 2870,
+      "isVerified": false,
+      "confidence": 0.83,
+      "tier": "weak",
+      "scoreRationale": "Genuine person but wrong vertical; no offering fits the ask.",
+      "recommendedAction": "Politely clarify the brand is fitness supplements/coaching; no skincare product.",
+      "draftReply": "hey! we're actually a fitness supplement + coaching brand, so we don't carry skincare — wish we could help with that one!"
+    }
+  },
+  "cryptoking_gains2024": {
+    "qualityScore": 2,
+    "summary": "A crypto airdrop scam telling the brand its page was 'selected' and to click a bio link.",
+    "enrichmentInfo": {
+      "intentCategory": "scam",
+      "primaryAsk": "Click the link in bio to claim a crypto airdrop.",
+      "vertical": "crypto",
+      "audienceFit": { "level": "na", "reason": "Not a lead; malicious spam." },
+      "spamSignals": { "isSpam": true, "reasons": ["unsolicited airdrop", "click bio link", "no fitness relevance"] },
+      "buyingSignals": { "urgency": "none", "signals": [] },
+      "language": "en",
+      "audienceSize": 47,
+      "isVerified": false,
+      "confidence": 0.98,
+      "tier": "spam",
+      "scoreRationale": "Textbook crypto scam; zero value and a safety risk.",
+      "recommendedAction": "Ignore / block / report. Do not engage.",
+      "draftReply": null
+    }
+  }
+}
