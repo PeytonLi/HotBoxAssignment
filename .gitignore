@@ -34,3 +34,6 @@ test-results/
 # os / editor
 .DS_Store
 Thumbs.db
+
+# E2E test artifacts
+.env.test

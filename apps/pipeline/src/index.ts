@@ -46,6 +46,16 @@ async function main(): Promise<void> {
   await writeFile(outPath, JSON.stringify(validated, null, 2));
 
   console.log(`\n[pipeline] Done in ${elapsed}s — ${Object.keys(results).length} leads written to results.json`);
+
+  if (process.env.DATABASE_URL) {
+    try {
+      const { seed, prisma } = await import("@hotbox/db");
+      await seed(prisma, validated);
+      console.log(`[pipeline] Seeded ${Object.keys(validated).length} leads into DB`);
+    } catch (err) {
+      console.warn("[pipeline] DB seed skipped:", (err as Error).message);
+    }
+  }
 }
 
 main().catch((err: unknown) => {
