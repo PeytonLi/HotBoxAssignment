@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 // Reset triage state before each test to ensure independence
-async function resetTriageState(page: import("@playwright/test").Page) {
+async function resetTriageState(_page: import("@playwright/test").Page) {
   // Set all leads back to unhandled via the API
   const leads = [
     "matt.lifts.heavy",

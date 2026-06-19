@@ -3,16 +3,15 @@ import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
 import Anthropic from "@anthropic-ai/sdk";
 import { BusinessProfileSchema, LeadsFileSchema, ResultsFileSchema } from "@hotbox/schema";
+import { getPipelineEnv } from "@hotbox/config";
 import { runPipeline } from "./pipeline.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 async function main(): Promise<void> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    console.error("[pipeline] Error: ANTHROPIC_API_KEY is not set");
-    process.exit(1);
-  }
+  // Throws with a clear message if required env vars are missing
+  const env = getPipelineEnv();
+  const { ANTHROPIC_API_KEY: apiKey } = env;
 
   // Conditionally load Prisma for DB-backed cache
   let prismaClient: import("@prisma/client").PrismaClient | undefined;
@@ -57,7 +56,9 @@ async function main(): Promise<void> {
   const validated = ResultsFileSchema.parse(results);
   await writeFile(outPath, JSON.stringify(validated, null, 2));
 
-  console.log(`\n[pipeline] Done in ${elapsed}s — ${Object.keys(results).length} leads written to results.json`);
+  console.log(
+    `\n[pipeline] Done in ${elapsed}s — ${Object.keys(results).length} leads written to results.json`,
+  );
 
   if (prismaClient) {
     try {

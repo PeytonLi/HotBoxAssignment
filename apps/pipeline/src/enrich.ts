@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { EnrichmentBaseSchema } from "@hotbox/schema";
+import { CLAUDE_MODEL } from "@hotbox/config";
 import type { EnrichmentBase, Lead } from "@hotbox/schema";
 
 const TOOL_NAME = "extract_enrichment";
@@ -118,7 +119,7 @@ ${lead.dm}
 IMPORTANT: This enrichment is the COMPLETE carrier of every post-derived signal into downstream scoring — the scorer will NOT see the posts. Extract audience fit, vertical, authenticity, urgency, and any time-sensitive details (e.g. "has a meet Saturday") fully.`;
 
   const response = await client.messages.create({
-    model: "claude-sonnet-4-6",
+    model: CLAUDE_MODEL,
     max_tokens: 1024,
     temperature: 0,
     tools: [TOOL],

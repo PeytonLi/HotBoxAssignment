@@ -1,12 +1,14 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { ScoreOutputSchema } from "@hotbox/schema";
+import { CLAUDE_MODEL } from "@hotbox/config";
 import type { BusinessProfile, EnrichmentBase, Lead, ScoreOutput } from "@hotbox/schema";
 
 const TOOL_NAME = "score_lead";
 
 const TOOL: Anthropic.Tool = {
   name: TOOL_NAME,
-  description: "Score a lead's expected value to this specific business and produce action guidance.",
+  description:
+    "Score a lead's expected value to this specific business and produce action guidance.",
   input_schema: {
     type: "object" as const,
     properties: {
@@ -70,7 +72,7 @@ SCORING INSTRUCTIONS:
 5. draftReply: write one only for hot/strong/lukewarm tiers in the business's casual, direct voice. Return null for weak/spam.`;
 
   const response = await client.messages.create({
-    model: "claude-sonnet-4-6",
+    model: CLAUDE_MODEL,
     max_tokens: 1024,
     temperature: 0,
     tools: [TOOL],

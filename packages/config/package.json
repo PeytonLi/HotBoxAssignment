@@ -1,25 +1,20 @@
 {
-  "name": "@hotbox/pipeline",
+  "name": "@hotbox/config",
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
-    "pipeline": "tsx src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "catalog:",
-    "@hotbox/db": "workspace:*",
-    "@hotbox/config": "workspace:*",
-    "@hotbox/schema": "workspace:*",
-    "@prisma/client": "catalog:",
-    "p-limit": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "tsx": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
