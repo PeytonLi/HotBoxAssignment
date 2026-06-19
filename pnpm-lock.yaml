@@ -98,6 +98,9 @@ importers:
       '@anthropic-ai/sdk':
         specifier: 'catalog:'
         version: 0.68.0(zod@3.25.76)
+      '@hotbox/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@hotbox/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -126,6 +129,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@hotbox/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@hotbox/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -166,6 +172,22 @@ importers:
       jsdom:
         specifier: ^29.1.1
         version: 29.1.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.9(@types/node@22.19.21)(jsdom@29.1.1)
+
+  packages/config:
+    dependencies:
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.76
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.19.21
       typescript:
         specifier: 'catalog:'
         version: 5.9.3

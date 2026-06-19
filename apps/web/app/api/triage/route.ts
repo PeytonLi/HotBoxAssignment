@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { getWebEnv } from "@hotbox/config";
+// Validate at module load time — throws on missing required vars
+const _env = getWebEnv();
 import { prisma, prismaTriageStore } from "@hotbox/db";
 import type { TriageStatus, TriageStore } from "@hotbox/schema";
 import { inMemoryTriageStore, TRIAGE_STATUSES } from "@hotbox/schema";
@@ -12,8 +15,9 @@ function getStore(): TriageStore {
     async getAll() {
       try {
         return await dbStore.getAll();
-      } catch (err: any) {
-        if (err?.code === "P2021") {
+      } catch (err: unknown) {
+        const prismaErr = err as { code?: string };
+        if (prismaErr.code === "P2021") {
           console.warn("GET /api/triage: DB table missing, using in-memory fallback");
           _store = inMemoryTriageStore();
           return {};
@@ -24,8 +28,9 @@ function getStore(): TriageStore {
     async setStatus(username, status) {
       try {
         return await dbStore.setStatus(username, status);
-      } catch (err: any) {
-        if (err?.code === "P2021") {
+      } catch (err: unknown) {
+        const prismaErr = err as { code?: string };
+        if (prismaErr.code === "P2021") {
           console.warn("POST /api/triage: DB table missing, using in-memory fallback");
           _store = inMemoryTriageStore();
           return _store.setStatus(username, status);
