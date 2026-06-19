@@ -8,7 +8,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: ["./src/test-setup.ts"],
-    include: ["src/**/*.{test,spec}.?(c|m)[jt]s?(x)"],
+    include: ["src/**/*.{test,spec}.?(c|m)[jt]s?(x)", "app/**/*.{test,spec}.?(c|m)[jt]s?(x)"],
   },
   resolve: {
     alias: {

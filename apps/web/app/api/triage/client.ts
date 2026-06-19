@@ -20,16 +20,18 @@ export function apiTriageStore(): TriageStore {
     },
 
     async setStatus(username: string, status: TriageStatus): Promise<void> {
+      const secret = process.env.NEXT_PUBLIC_TRIAGE_API_SECRET;
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (secret) headers["Authorization"] = `Bearer ${secret}`;
+
       const response = await fetch("/api/triage", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({ username, status }),
       });
       if (!response.ok) {
         const body = (await response.json()) as { error?: string };
-        throw new Error(
-          body.error ?? `POST /api/triage failed: ${response.status}`,
-        );
+        throw new Error(body.error ?? `POST /api/triage failed: ${response.status}`);
       }
     },
   };

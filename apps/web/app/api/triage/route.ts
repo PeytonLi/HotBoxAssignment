@@ -47,7 +47,27 @@ export async function GET(): Promise<NextResponse> {
   }
 }
 
+/**
+ * Checks the Authorization header against TRIAGE_API_SECRET env var.
+ * Returns null if authorized (or if no secret is configured — allows unauthenticated
+ * access in development when TRIAGE_API_SECRET is not set).
+ * Returns a 401 NextResponse if the secret is set but the header is wrong/missing.
+ */
+function checkAuth(request: Request): NextResponse | null {
+  const secret = process.env.TRIAGE_API_SECRET;
+  if (!secret) return null; // No secret configured: skip auth (dev mode)
+
+  const authHeader = request.headers.get("authorization");
+  if (!authHeader || authHeader !== `Bearer ${secret}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  return null;
+}
+
 export async function POST(request: Request): Promise<NextResponse> {
+  const authError = checkAuth(request);
+  if (authError) return authError;
+
   try {
     const body = (await request.json()) as {
       username?: string;

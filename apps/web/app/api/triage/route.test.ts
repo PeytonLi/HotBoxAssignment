@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { inMemoryTriageStore } from "@hotbox/schema";
 
 // Create a shared mutable store that the route handler will use
@@ -75,5 +75,46 @@ describe("POST /api/triage", () => {
 
     const response = await POST(request);
     expect(response.status).toBe(400);
+  });
+});
+
+describe("POST /api/triage — auth", () => {
+  afterEach(() => {
+    delete process.env.TRIAGE_API_SECRET;
+  });
+
+  it("returns 401 when TRIAGE_API_SECRET is set and header is missing", async () => {
+    process.env.TRIAGE_API_SECRET = "test-secret";
+    const req = new Request("http://localhost/api/triage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: "alice", status: "handled" }),
+    });
+    const res = await POST(req);
+    expect(res.status).toBe(401);
+  });
+
+  it("accepts POST when TRIAGE_API_SECRET is set and header matches", async () => {
+    process.env.TRIAGE_API_SECRET = "test-secret";
+    const req = new Request("http://localhost/api/triage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer test-secret",
+      },
+      body: JSON.stringify({ username: "alice", status: "handled" }),
+    });
+    const res = await POST(req);
+    expect(res.status).toBe(200);
+  });
+
+  it("accepts POST without header when TRIAGE_API_SECRET is not set", async () => {
+    const req = new Request("http://localhost/api/triage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: "bob", status: "handled" }),
+    });
+    const res = await POST(req);
+    expect(res.status).toBe(200);
   });
 });
