@@ -12,6 +12,7 @@
     "@anthropic-ai/sdk": "catalog:",
     "@hotbox/db": "workspace:*",
     "@hotbox/schema": "workspace:*",
+    "@prisma/client": "catalog:",
     "p-limit": "catalog:",
     "zod": "catalog:"
   },

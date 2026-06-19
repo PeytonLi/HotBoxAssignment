@@ -14,6 +14,17 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
+  // Conditionally load Prisma for DB-backed cache
+  let prismaClient: import("@prisma/client").PrismaClient | undefined;
+  if (process.env.DATABASE_URL) {
+    try {
+      const { prisma } = await import("@hotbox/db");
+      prismaClient = prisma;
+    } catch {
+      console.warn("[pipeline] Could not load DB client — using filesystem cache");
+    }
+  }
+
   const repoRoot = resolve(__dirname, "../../..");
   const dataDir = resolve(repoRoot, "data");
 
@@ -37,6 +48,7 @@ async function main(): Promise<void> {
       const { tier } = result.enrichmentInfo;
       console.log(`  ✓ ${username.padEnd(30)} ${tier.padEnd(10)} (${result.qualityScore})`);
     },
+    prisma: prismaClient,
   });
 
   const elapsed = ((Date.now() - startMs) / 1000).toFixed(1);
@@ -47,10 +59,10 @@ async function main(): Promise<void> {
 
   console.log(`\n[pipeline] Done in ${elapsed}s — ${Object.keys(results).length} leads written to results.json`);
 
-  if (process.env.DATABASE_URL) {
+  if (prismaClient) {
     try {
-      const { seed, prisma } = await import("@hotbox/db");
-      await seed(prisma, validated);
+      const { seed } = await import("@hotbox/db");
+      await seed(prismaClient, validated);
       console.log(`[pipeline] Seeded ${Object.keys(validated).length} leads into DB`);
     } catch (err) {
       console.warn("[pipeline] DB seed skipped:", (err as Error).message);

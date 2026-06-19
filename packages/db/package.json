@@ -9,9 +9,10 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "migrate": "prisma migrate dev --name init",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
     "generate": "prisma generate",
-    "db:push": "prisma db push"
+    "studio": "prisma studio"
   },
   "dependencies": {
     "@hotbox/schema": "workspace:*",

@@ -1,0 +1,6 @@
+-- CreateTable
+CREATE TABLE "CacheEntry" (
+    "key" TEXT NOT NULL PRIMARY KEY,
+    "value" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
