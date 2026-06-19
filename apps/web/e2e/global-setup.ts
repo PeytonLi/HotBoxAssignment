@@ -29,8 +29,8 @@ async function globalSetup() {
   console.log(`[e2e setup] DATABASE_URL=${dbUrl}`);
   console.log(`[e2e setup] schema=${schemaPath}`);
 
-  // Run prisma db push from the repo root using pnpm to get the local prisma version
-  execSync(`pnpm --filter @hotbox/db db:push`, {
+  // Run prisma migrate deploy from the repo root to apply migrations deterministically
+  execSync(`pnpm --filter @hotbox/db migrate:deploy`, {
     env: { ...process.env, DATABASE_URL: dbUrl },
     stdio: "inherit",
     cwd: repoRoot,
