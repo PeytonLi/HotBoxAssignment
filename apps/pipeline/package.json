@@ -13,6 +13,7 @@
     "@hotbox/db": "workspace:*",
     "@hotbox/config": "workspace:*",
     "@hotbox/schema": "workspace:*",
+    "@prisma/client": "catalog:",
     "p-limit": "catalog:",
     "zod": "catalog:"
   },
