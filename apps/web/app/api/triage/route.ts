@@ -12,8 +12,9 @@ function getStore(): TriageStore {
     async getAll() {
       try {
         return await dbStore.getAll();
-      } catch (err: any) {
-        if (err?.code === "P2021") {
+      } catch (err: unknown) {
+        const prismaErr = err as { code?: string };
+        if (prismaErr.code === "P2021") {
           console.warn("GET /api/triage: DB table missing, using in-memory fallback");
           _store = inMemoryTriageStore();
           return {};
@@ -24,8 +25,9 @@ function getStore(): TriageStore {
     async setStatus(username, status) {
       try {
         return await dbStore.setStatus(username, status);
-      } catch (err: any) {
-        if (err?.code === "P2021") {
+      } catch (err: unknown) {
+        const prismaErr = err as { code?: string };
+        if (prismaErr.code === "P2021") {
           console.warn("POST /api/triage: DB table missing, using in-memory fallback");
           _store = inMemoryTriageStore();
           return _store.setStatus(username, status);
