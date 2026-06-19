@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { getWebEnv } from "@hotbox/config";
+// Validate at module load time — throws on missing required vars
+const _env = getWebEnv();
 import { prisma, prismaTriageStore } from "@hotbox/db";
 import type { TriageStatus, TriageStore } from "@hotbox/schema";
 import { inMemoryTriageStore, TRIAGE_STATUSES } from "@hotbox/schema";
