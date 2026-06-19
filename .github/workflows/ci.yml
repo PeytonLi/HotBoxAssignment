@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Prisma client
+        run: pnpm --filter @hotbox/db run generate
+
       - name: Typecheck
         run: pnpm typecheck
 
@@ -45,6 +48,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm --filter @hotbox/db run generate
 
       - name: Test
         run: pnpm test
@@ -89,6 +95,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm --filter @hotbox/db run generate
 
       - name: Install Playwright browsers
         run: pnpm --filter @hotbox/web exec playwright install --with-deps chromium
