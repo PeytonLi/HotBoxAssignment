@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@hotbox/db": "workspace:*",
+    "@hotbox/config": "workspace:*",
     "@hotbox/schema": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",
