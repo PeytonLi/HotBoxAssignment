@@ -60,6 +60,7 @@ export function FilterBar({ filters, showHandled, onFiltersChange, onShowHandled
           Show handled
         </label>
       </div>
+      <div className="keyboard-hint">j/k navigate &nbsp;&middot;&nbsp; h handle &nbsp;&middot;&nbsp; d dismiss</div>
     </div>
   );
 }
