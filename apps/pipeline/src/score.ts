@@ -64,6 +64,16 @@ ${JSON.stringify(enrichment, null, 2)}
 LEAD'S DM (verbatim):
 ${lead.dm}
 
+CALIBRATION EXAMPLES (these show the rubric applied — do not score these, just use as anchors):
+• A person with 134 followers who explicitly asks "I want coaching, stuck 5 months" → hot (91).
+  Follower count is irrelevant; they directly match goal #1 with high intent.
+• A lifestyle/travel influencer with 312k followers whose content is not fitness → weak (22).
+  Large audience, zero product or service fit for this business.
+• A cold pitch from a social media marketing agency offering "growth packages" → spam (5).
+  They are selling TO the business, not buying from it.
+• An existing customer asking about a specific product question → lukewarm (45).
+  Real engagement, but low conversion probability vs coaching or direct purchase intent.
+
 SCORING INSTRUCTIONS:
 1. Read the business profile fields — use "goals" ordering, "idealCustomer", and "commonSpam" as your rubric. Do NOT hardcode any specific industry name.
 2. Choose a TIER first (based on expected value to this business), then pick an integer within that tier's band.
