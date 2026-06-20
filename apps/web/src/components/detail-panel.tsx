@@ -21,6 +21,7 @@ function Field({ label, value }: { label: string; value: string | number | null 
 
 export function DetailPanel({ lead }: Props) {
   const [showPosts, setShowPosts] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   if (!lead) {
     return (
@@ -33,6 +34,8 @@ export function DetailPanel({ lead }: Props) {
   const handleCopy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
       // clipboard API not available; ignore
     }
@@ -118,7 +121,7 @@ export function DetailPanel({ lead }: Props) {
           <div className="draft-reply-box">
             {lead.draftReply}
             <button className="copy-button" onClick={() => handleCopy(lead.draftReply!)}>
-              Copy
+              {copied ? "Copied!" : "Copy"}
             </button>
           </div>
         </div>
