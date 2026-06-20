@@ -8,7 +8,7 @@ import { assembleLead, makeErrorResult } from "./assemble.js";
 import { buildCacheKey, readCache, writeCache } from "./cache.js";
 import type { PrismaClient } from "@prisma/client";
 
-const PROMPT_VERSION = "v1";
+const PROMPT_VERSION = "v2";
 const MAX_RETRIES = 2;
 const CONCURRENCY = 5;
 

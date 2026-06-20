@@ -48,6 +48,10 @@ export const EnrichmentBaseSchema = z.object({
   audienceSize: z.number().int().nonnegative().optional(),
   isVerified: z.boolean().optional(),
   confidence: z.number().min(0).max(1),
+  /** avg (likes + comments) per post / followerCount; 0 if no posts or 0 followers */
+  engagementRate: z.number().min(0),
+  /** whether follower count appears consistent with observed engagement */
+  contentAuthenticity: z.enum(["high", "medium", "low"]),
 });
 export type EnrichmentBase = z.infer<typeof EnrichmentBaseSchema>;
 

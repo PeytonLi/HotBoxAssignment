@@ -44,6 +44,8 @@ export function makeErrorResult(lead: Lead, error: unknown): LeadResult {
       buyingSignals: { urgency: "none", signals: [] },
       language: "en",
       confidence: 0,
+      engagementRate: 0,
+      contentAuthenticity: "low",
       tier: "spam",
       scoreRationale: "Processing error — manual review required",
       recommendedAction: `Investigate ${lead.username} and reprocess`,

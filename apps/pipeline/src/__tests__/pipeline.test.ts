@@ -49,6 +49,8 @@ const mockEnrichResult = {
   buyingSignals: { urgency: "high" as const, signals: ["ready now"] },
   language: "en",
   confidence: 0.9,
+  engagementRate: 0.05,
+  contentAuthenticity: "high" as const,
 };
 
 const mockScoreResult = {

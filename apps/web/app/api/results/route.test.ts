@@ -25,6 +25,8 @@ function enrichmentBlob(overrides: Partial<EnrichmentInfo> = {}): string {
     audienceSize: 134,
     isVerified: false,
     confidence: 0.5,
+    engagementRate: 0,
+    contentAuthenticity: "medium",
     scoreRationale: "db rationale",
     recommendedAction: "db action",
     draftReply: null,

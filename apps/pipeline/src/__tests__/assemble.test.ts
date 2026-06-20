@@ -14,6 +14,8 @@ const baseEnrich: EnrichmentBase = {
   audienceSize: 134,
   isVerified: false,
   confidence: 0.9,
+  engagementRate: 0.05,
+  contentAuthenticity: "high",
 };
 
 const baseScore: ScoreOutput = {
