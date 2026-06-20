@@ -74,6 +74,8 @@ button { cursor: pointer; font-family: inherit; }
 
 .category-chip { font-size: 10px; padding: 2px 6px; border-radius: var(--radius); background: rgba(255,255,255,0.06); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; flex-shrink: 0; }
 
+.lang-badge { font-size: 0.65rem; font-weight: 700; padding: 1px 5px; border-radius: 3px; background: #7c3aed; color: #fff; letter-spacing: 0.05em; flex-shrink: 0; }
+
 .urgency-flag { font-size: 10px; padding: 1px 5px; border-radius: 3px; font-weight: 600; flex-shrink: 0; }
 .urgency-flag.high { color: var(--color-hot); background: var(--color-hot-bg); }
 .urgency-flag.medium { color: var(--color-strong); background: var(--color-strong-bg); }

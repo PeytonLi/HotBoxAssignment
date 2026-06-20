@@ -26,6 +26,11 @@ export function QueueRow({ lead, isSelected, isHandled, onClick }: Props) {
         <span className="queue-row-name">{lead.fullName}</span>
         <CategoryChip category={lead.intentCategory} />
         <UrgencyFlag urgency={lead.buyingSignals.urgency} />
+        {lead.language !== "en" && (
+          <span className="lang-badge" title={`Lead wrote in ${lead.language}`}>
+            {lead.language.toUpperCase()}
+          </span>
+        )}
       </div>
       <div className="queue-row-username">@{lead.username}</div>
       <div className="queue-row-summary">{lead.summary}</div>
