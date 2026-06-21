@@ -68,6 +68,8 @@ describe("seed()", () => {
         audienceSize: 500,
         isVerified: false,
         confidence: 0.9,
+        engagementRate: 0.05,
+        contentAuthenticity: "high" as const,
         tier: "hot",
         scoreRationale: "Coaching intent matches #1 goal",
         recommendedAction: "Send coaching overview",

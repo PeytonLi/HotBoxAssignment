@@ -23,6 +23,8 @@ function result(tier: string, score: number) {
       buyingSignals: { urgency: "none" as const, signals: [] },
       language: "en",
       confidence: 0.5,
+      engagementRate: 0,
+      contentAuthenticity: "medium" as const,
       scoreRationale: "",
       recommendedAction: "",
     },

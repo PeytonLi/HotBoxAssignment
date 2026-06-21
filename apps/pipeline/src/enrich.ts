@@ -5,7 +5,7 @@ import type { EnrichmentBase, Lead } from "@hotbox/schema";
 
 /** Average (likes + comments) per post divided by followerCount. Returns 0 for no posts or 0 followers. */
 export function computeEngagementRate(
-  posts: Pick<Lead["recentPosts"][number], "likeCount" | "commentCount">[],
+  posts: Array<{ likeCount?: number | null; commentCount?: number | null }>,
   followerCount: number,
 ): number {
   if (posts.length === 0 || followerCount === 0) return 0;
